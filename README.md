@@ -7,7 +7,7 @@ FIRRTL is a hardware intermediate representation (IR) language for digital circu
  
 The RTL design is lowered into a FIRRTL representation using the *Chisel* compiler or *Yosys* in case of Verilog and System Verilog. The FIRRTL representation is subsequently lowered to a structured netlist and input to *ESSENT* to build a cycle-accurate C-model of the design. The generated C model is instrumented to enable FI and tracking capabilities according to user-defined fault parameters. The instrumented C model is compiled with a harness to produce an executable that runs fault simulations. With the current applications and benchmarks, we categorize the outcome as benign, silent data corruptions (SDC) and detectable unrecoverable error (DUE) which is currently classified as crash or hang. 
 
-![Eris Tool Flow](https://github.com/shubhamn94/Eris_temp/blob/master/Eris_Flow.png)
+![Eris Tool Flow](https://github.com/amroawad2/Eris/blob/master/Eris_Flow.png)
 
 ## Emit C-model header
 *Essent* tool has been added a submodule. Please follow the README instructions provided in the Essent repo to generate C-model header from FIRRTL file. 
