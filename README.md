@@ -66,7 +66,7 @@ The checksum is computed by XOR'ing all the program data output.
 ### Fault tracking log analysis
 Along with the simulation outcome, fault tracking log is generated storing fault propagation information through tracking metadata. The tracking log can be analyzed to form fault tree and Propagation Factor of each node within the tree. Only the P.F of state retaining elements or essentially global or data structure elements are analyzed for vulnerabilities. A simplified example of tree structure is presented below in the figure. It could also have *cyclic dependencies* which is broken down while analysis.
 
-<img src="https://github.com/shubhamn94/Eris_temp/blob/master/fault_tracking_tree.png" width="500" height="300" />
+<img src="https://github.com/shubhamn94/Eris_temp/blob/master/fault_tracking_tree.png" width="500" height="250" />
 
 It follows the below equation to determine Propagation Factor. Hotspots are the nodes in the tree having outsized Propagation factor, and is partly denoted as intensity of color of each node in the above figure. 
 
