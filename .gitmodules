@@ -1,0 +1,3 @@
+[submodule "essent"]
+	path = essent
+	url = https://github.com/ucsc-vama/essent.git

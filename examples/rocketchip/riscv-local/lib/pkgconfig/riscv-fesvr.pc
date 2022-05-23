@@ -1,0 +1,11 @@
+prefix=/media/puyoman/3CCD-373B/fault_injection/code/essent-rocket-demo/riscv-local
+exec_prefix=/media/puyoman/3CCD-373B/fault_injection/code/essent-rocket-demo/riscv-local
+libdir=${prefix}/${exec_prefix}/lib
+includedir=${prefix}/${prefix}/include
+
+Name: riscv-fesvr
+Description: RISC-V front-end server
+Version: git
+Libs: -Wl,-rpath,${libdir} -L${libdir} -lfesvr
+Cflags: -I${includedir} 
+URL: http://riscv.org/download.html#tab_fesvr
