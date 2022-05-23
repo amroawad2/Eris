@@ -1,7 +1,7 @@
 # Eris
 
 Eris is a Fault Injection and Tracking Framework for Reliability analysis of RTL designs convertible to FIRRTL. Current support include conversion from **Chisel** to FIRRTL through Chisel driver and **Verilog** and **System Verilog** to FIRRTL from yosys. <br /> 
-FIRRTL is a hardware intermediate representation (IR) language for digital circuits designed as a platform for writing circuit-level transformations. 
+FIRRTL is a hardware intermediate representation (IR) language for digital circuits designed as a platform for writing circuit-level transformations. More details on FIRRTL can be viewed in the [link here](https://github.com/chipsalliance/firrtl)
 
 ## Eris Flow
  
@@ -21,15 +21,10 @@ make all
 We assume that the Essent C-model is already available and got generated from the structured netlist emitted from FIRRTL. Current example is chosen for Rocketchip SoC where instrumented header is generated. 
 ```bash
 ./header_parser -i TestHarness.h -o TestHarness_instr.h
-
-Manually replace <uint.h> and <sint.h> with "fault_uint.h" and "fault_sint.h" kept in the $(PWD).
 ```
+Replace the Essent headers(*uint.h* & *sint.h*) with  with *"fault_uint.h"* and *"fault_sint.h"* kept in working directory and add print_fault_list() API in a destructor of main class.
 Add the following lines at the start of eval() API of instrumented header
 
-```bash
-if(cycle % 10000 == 0)
-    print_fault_list();
-```
 ## Extract state retaining elements from C-model header
 ```bash
 ./gen_global_reglist -i TestHarness.h
