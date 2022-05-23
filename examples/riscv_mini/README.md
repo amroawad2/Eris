@@ -1,4 +1,4 @@
-## Generate RISCV executable
+### Generate RISCV executable
 
 * Replace *Tile.h* in *top.cc* with *Tile_instr.h* which is essentially the modified header for fault simulation
 * Replace <uint.h> with "fault_uint.h"
@@ -16,7 +16,7 @@ Generate state retaining elements:
 or 
 ./gen_global_regs_weighted -i Tile.h
 ```
-Generate fault files: 
+### Generate fault files
 ```bash
 fault_file_gen.py -f struct_regs.txt -c <exec_cycles>
 ```
@@ -29,8 +29,8 @@ Example: ./riscv_mini towers.riscv.hex fault_file_0.txt
 This will cause the faults detailed in fault_file_0.txt to be injected during the runtime of the riscv_mini program.
 
 -----This section can be ignored if you'd just like to run simulation tests---------
-* Replace #include <uint.h> and #include <sint.h> with #include "fault_uint.h" and #include "fault_sint.h" respectively
-* In top.cpp replace #include <uint.h> with #include "fault_uint.h" and #include <mm.h> with #include "mm.h"
+* Replace Essent headers (*uint.h* and *sint.h* with *"fault_uint.h"* and *"fault_sint.h"* respectively
+* In top.cpp replace Essent headers and <mm.h> to "mm.h"
 * At the start of main in top.cpp add the line: "fault_file = argv[2];"
 
 
