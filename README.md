@@ -64,8 +64,7 @@ The generated output in *output.log* can be:
 The checksum is computed by XOR'ing all the program data output. 
 
 ### Fault tracking log analysis
-Along with the simulation outcome, fault tracking log is generated storing fault propagation information through tracking metadata. The tracking log can be analyzed to form fault tree and Propagation Factor of each node within the tree. Only the P.F of state retaining elements or essentially global or data structure elements are analyzed for vulnerabilities. A simplified example of tree structure is presented below in the figure. It could also have *cyclic dependencies* which is broken down while analysis.
-
+Along with the simulation outcome, fault tracking log is generated storing fault propagation information through tracking metadata. The tracking log can be analyzed to form fault tree and Propagation Factor of each node within the tree. Only the P.F of state retaining elements or essentially global or data structure elements are analyzed for vulnerabilities. A simplified example of tree structure is presented below in the figure. It could also have *cyclic dependencies* which is broken down while analysis. 
 <img src="https://github.com/amroawad2/Eris/blob/master/fault_tracking_tree.png" width="450" height="250" />
 
 It follows the below equation to determine Propagation Factor. Hotspots are the nodes in the tree having outsized Propagation factor, and is partly denoted as intensity of color of each node in the above figure. 
@@ -77,5 +76,6 @@ Copy the fault_tracking.log to fault_tree_analysis/
 cd fault_tree_analysis
 ./automation.sh
 ```
-The propagation factor is stored in *fp_factor.log* corresponding to the unique index of each node for a given fault tree. It should be noted that for simplicity we are injecting only one fault per simulation so that there's no overlapping tree's which could possibly lead to contructive or destructive inteference causing masking effect. The vulnerablility for each node due to a faulty register is analyzed independent of other faults.
+The propagation factor is stored in *fp_factor.log* corresponding to the unique index of each node for a given fault tree. Fault analysis follows a post order depth first search traversal algorithm where the leaf nodes or child node's P.F is computed and based on it, the parent node's P.F is determined.
+It should be noted that for simplicity we are injecting only one fault per simulation so that there's no overlapping tree's which could possibly lead to contructive or destructive inteference causing masking effect. The vulnerablility for each node due to a faulty register is analyzed independent of other faults.
 Only the P.F of state retaining node present in struct_regs.txt should be considered for vulnerability determination and mitigation.
